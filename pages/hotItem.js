@@ -49,12 +49,12 @@ const useStyles = createStyles((theme) => ({
     },
 }));
 
-export function Menu() {
+export function HotItem() {
     const { classes } = useStyles();
 
     return (
         <div>
-            <Title order={1}>Menu</Title>
+            <Title order={1}>Hot Item</Title>
             <Button>Settings</Button>
         </div>
     );
@@ -62,13 +62,13 @@ export function Menu() {
 
 
 
-/* Set the Global User Context to Menu Component */
-export default function MenuWithContext() {
+/* Set the Global User Context to HotItem Component */
+export default function HotItemWithContext() {
     return (
         <>
             <NavBar />
             <UserProvider>
-                <Menu />
+                <HotItem />
             </UserProvider>
         </>
     )

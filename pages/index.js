@@ -4,48 +4,66 @@ import { UserContext, UserProvider } from '../components/userContext';
 import NavBar from '../components/navbar';
 import React, { useState } from 'react';
 
-import {
-  Title,
-  Text,
-  Anchor,
-  rem,
-  createStyles,
-  Paper,
-  Image,
-  Button,
-} from '@mantine/core';
+import { createStyles, Overlay, Container, Title, Button, Text, rem } from '@mantine/core';
 
 const useStyles = createStyles((theme) => ({
-  full_container: {
-    height: `calc(100vh - 60px)`,
+  hero: {
     position: 'relative',
-    background: 'linear-gradient(20deg, purple, darkslateblue);',
+    backgroundImage:
+      'url(https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80)',
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
   },
 
-  form_container: {
-    width: '50%',
-    height: '100%',
-    float: 'left',
+  container: {
+    height: rem(700),
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'flex-end',
+    alignItems: 'flex-start',
+    paddingBottom: `calc(${theme.spacing.xl} * 6)`,
+    zIndex: 1,
     position: 'relative',
-    [theme.fn.smallerThan('sm')]: {
-      width: '100%',
-    },
-  },
-
-  image_container: {
-    width: '50%',
-    height: '100%',
-    float: 'left',
-    background: 'linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url("/images/credit_card1.png") center/cover no-repeat',
 
     [theme.fn.smallerThan('sm')]: {
-      display: 'none',
+      height: rem(500),
+      paddingBottom: `calc(${theme.spacing.xl} * 3)`,
     },
   },
 
   title: {
-    color: theme.colorScheme === 'dark' ? theme.white : theme.black,
-    fontFamily: `Greycliff CF, ${theme.fontFamily}`,
+    color: theme.white,
+    fontSize: rem(60),
+    fontWeight: 900,
+    lineHeight: 1.1,
+
+    [theme.fn.smallerThan('sm')]: {
+      fontSize: rem(40),
+      lineHeight: 1.2,
+    },
+
+    [theme.fn.smallerThan('xs')]: {
+      fontSize: rem(28),
+      lineHeight: 1.3,
+    },
+  },
+
+  description: {
+    color: theme.white,
+    maxWidth: 600,
+
+    [theme.fn.smallerThan('sm')]: {
+      maxWidth: '100%',
+      fontSize: theme.fontSizes.sm,
+    },
+  },
+
+  control: {
+    marginTop: `calc(${theme.spacing.xl} * 1.5)`,
+
+    [theme.fn.smallerThan('sm')]: {
+      width: '100%',
+    },
   },
 }));
 
@@ -53,45 +71,30 @@ export function Home() {
   const { classes } = useStyles();
 
   return (
-    <>
-      <Title order={1}>Home</Title>
-      <Button>Settings</Button>
-    </>
+    <div className={classes.hero}>
+      <Overlay
+        gradient="linear-gradient(180deg, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, .65) 40%)"
+        opacity={1}
+        zIndex={0}
+      />
+      <Container className={classes.container}>
+        <Title className={classes.title}>Lorem ipsum dolor sit amet</Title>
+        <Text className={classes.description} size="xl" mt="xl">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+        Lectus urna duis convallis convallis tellus id interdum.
+        </Text>
+
+        <Button variant="gradient" gradient={{ from: '#C53030', to: '#63171B' }} size="lg" radius="lg" className={classes.control}>
+          Get started
+        </Button>
+      </Container>
+
+      {/*TODO: About Section*/}
+    </div>
   );
 }
 
 
-{/*
-function Home(){
-  const ctx = React.useContext(UserContext)
-  let current_user = ctx.current_user;
-  return(
-    <Layout>
-        <Head>
-            <title>{siteTitle}</title>
-        </Head>
-        <div className="container-big">
-            <div className="container-left">
-                <div className="row subcontainer">
-                    <div className="col col-8 col-sm-7 col-md-6 col-lg-7 col-xl-6 my-auto mx-auto">
-                        <Card
-                            txtcolor="black"
-                            header="BadBank Landing Page"
-                            headercolor = "white"
-                            headerBackground = "#592e83"
-                            title={`Welcome to the bank ${current_user[0]}!`}
-                            text="You can use this bank"
-                            body={(<img src="./img/bank.png" className="img-fluid" alt="Responsive image"></img>)}
-                        />
-                    </div>
-                </div>
-            </div>
-            <div className="container-right"></div>
-        </div>
-    </Layout>
-  )
-}
-*/}
 
 /* Set the Global User Context to Home Component */
 export default function HomeWithContext() {

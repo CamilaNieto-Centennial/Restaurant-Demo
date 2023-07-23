@@ -99,8 +99,8 @@ export default function NavBar() {
                         <a href="/" className={classes.link}>
                             Home
                         </a>
-                        <a href="/about" className={classes.link}>
-                            About Us
+                        <a href="/hotItem" className={classes.link}>
+                            Hot Item
                         </a>
                         <a href="/menu" className={classes.link}>
                             Menu
@@ -109,7 +109,11 @@ export default function NavBar() {
                             Contact
                         </a>
                     </Group>
+                    <Group spacing="1.5rem" className={classes.hiddenMobile}>
+                        <ThemeSwitcher />
+                    </Group>
 
+                    {/*
                     {user ? (
                         <Group spacing="1.5rem" className={classes.hiddenMobile}>
                             <Group spacing=".5rem">
@@ -134,6 +138,7 @@ export default function NavBar() {
                             <ThemeSwitcher />
                         </Group>
                     )}
+                    */}
                     <Burger opened={drawerOpened} onClick={toggleDrawer} className={classes.hiddenDesktop} />
                 </Group>
             </Header>
@@ -162,7 +167,9 @@ export default function NavBar() {
                 <a href="/alldata" className={classes.link}>
                     Contact
                 </a>
+                <ThemeSwitcher />
 
+                {/*
                 <Divider my="sm" color={theme.colorScheme === 'dark' ? 'dark.5' : 'gray.1'} />
 
                 {user ? (
@@ -189,6 +196,7 @@ export default function NavBar() {
                         <ThemeSwitcher />
                     </Group>
                 )}
+                */}
                 {/*</ScrollArea>*/}
             </Drawer>
         </Box>
