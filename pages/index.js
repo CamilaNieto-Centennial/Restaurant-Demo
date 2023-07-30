@@ -3,6 +3,9 @@ import Layout, { siteTitle } from '../components/layout';
 import { UserContext, UserProvider } from '../components/userContext';
 import NavBar from '../components/navbar';
 import React, { useState } from 'react';
+import ImageCard from '../components/card';
+import Footer from '../components/footer';
+import Comment from '../components/comment';
 
 import { createStyles, Overlay, Container, Title, Flex, Button, Text, rem, Image } from '@mantine/core';
 
@@ -28,6 +31,22 @@ const useStyles = createStyles((theme) => ({
     [theme.fn.smallerThan('sm')]: {
       height: rem(500),
       paddingBottom: `calc(${theme.spacing.xl} * 3)`,
+    },
+  },
+
+  containerSmall: {
+    height: rem(400),
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'flex-end',
+    alignItems: 'flex-start',
+    paddingBottom: `calc(${theme.spacing.xl} * 2)`,
+    zIndex: 1,
+    position: 'relative',
+
+    [theme.fn.smallerThan('sm')]: {
+      height: rem(500),
+      paddingBottom: `calc(${theme.spacing.xl} * 1)`,
     },
   },
 
@@ -130,6 +149,14 @@ const useStyles = createStyles((theme) => ({
     },
   },
 
+  imageSection: {
+    position: 'relative',
+    backgroundImage:
+      'url(/img/kitchen_1.jpg)',
+    backgroundSize: 'cover',
+    backgroundPosition: '20% 50%',
+  },
+
 }));
 
 export function Home() {
@@ -165,7 +192,7 @@ export function Home() {
         >
           <div className={classes.childEl}>
             <div className={classes.backItem}>
-              <img radius="md" src="/img/graph_2.png" alt="Back Image" width={300}/>
+              <img radius="md" src="/img/graph_2.png" alt="Back Image" width={300} />
             </div>
             <div className={classes.frontItem}>
               <img radius="md" src="/img/about_3.jpg" alt="About Image" width={240} className={classes.borderImage} />
@@ -183,8 +210,44 @@ export function Home() {
         </Flex>
       </Container>
       {/*MENU*/}
+
+      <div className={classes.section}> {/* className={classes.imageSection}*/}
+        {/*
+        <Overlay
+          gradient="linear-gradient(180deg, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, .65) 40%)"
+          opacity={1}
+          zIndex={0}
+        />
+        */}
+        <Container>
+          <div className={classes.textContainer}>
+            <Title className={classes.titleSection}>Menu</Title>
+            <Flex
+              mih={50}
+              gap="md"
+              justify="flex-start"
+              align="flex-start"
+              direction="row"
+              wrap="wrap"
+            >
+              <ImageCard href="/" image="https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80" title="Hello World" author="Kmi" views="40" comments="2" />
+              <ImageCard href="/" image="https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80" title="Hello World" author="Kmi" views="40" comments="2" />
+              <ImageCard href="/" image="https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80" title="Hello World" author="Kmi" views="40" comments="2" />
+            </Flex>
+          </div>
+        </Container>
+      </div>
       {/*COMMENTS*/}
+      <div>
+        <Container>
+          <div className={classes.textContainer}>
+            <Title className={classes.titleSection}>Comments</Title>
+            <Comment name="Mike" postedAt="10 minutes ago" body="I use Heroku to host my Node.js application, but MongoDB add-on appears to be too expensive. I consider switching to Digital Ocean VPS to save some cash."/>
+          </div>
+        </Container>
+      </div>
       {/*FOOTER*/}
+      <Footer />
     </>
   );
 }
