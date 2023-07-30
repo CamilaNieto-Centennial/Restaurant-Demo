@@ -3,11 +3,11 @@ import { Switch, useMantineTheme, ActionIcon, createStyles, UnstyledButton, Text
 import { upperFirst, useMediaQuery } from '@mantine/hooks';
 import { IconMoon, IconSun, IconMoonStars } from '@tabler/icons-react';
 
-export const ThemeSwitcher = () => {
+export const ThemeSwitcher = (props) => {
     const { colorScheme, toggleColorScheme } = useMantineColorScheme();
 
     return (
-        <Group position="center">
+        <Group position={props.justify} className={props.style}>
             <ActionIcon
                 onClick={() => toggleColorScheme()}
                 size="lg"

@@ -110,7 +110,7 @@ export default function NavBar() {
                         </a>
                     </Group>
                     <Group spacing="1.5rem" className={classes.hiddenMobile}>
-                        <ThemeSwitcher />
+                        <ThemeSwitcher justify="right"/>
                     </Group>
 
                     {/*
@@ -153,21 +153,21 @@ export default function NavBar() {
                 zIndex={1000000}
             >
                 {/*<ScrollArea h={`calc(100vh - ${rem(60)})`} mx="-md">*/}
-                <Divider my="sm" color={theme.colorScheme === 'dark' ? 'dark.5' : 'gray.1'} />
+                <Divider my="sm" color={theme.colorScheme === 'dark' ? 'dark.5' : 'gray.1'}/>
 
                 <a href="/" className={classes.link}>
                     Home
                 </a>
-                <a href="/deposit" className={classes.link}>
-                    About Us
+                <a href="/hotItem" className={classes.link}>
+                    Hot Item
                 </a>
-                <a href="/withdraw" className={classes.link}>
+                <a href="/menu" className={classes.link}>
                     Menu
                 </a>
-                <a href="/alldata" className={classes.link}>
+                <a href="/contact" className={classes.link}>
                     Contact
                 </a>
-                <ThemeSwitcher />
+                <ThemeSwitcher justify="left" style={classes.link} />
 
                 {/*
                 <Divider my="sm" color={theme.colorScheme === 'dark' ? 'dark.5' : 'gray.1'} />
