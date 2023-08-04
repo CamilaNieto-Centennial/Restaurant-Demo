@@ -3,11 +3,12 @@ import Layout, { siteTitle } from '../components/layout';
 import { UserContext, UserProvider } from '../components/userContext';
 import NavBar from '../components/navbar';
 import React, { useState } from 'react';
+import Desserts from '../components/dessertsSection';
 import ImageCard from '../components/card';
 import Footer from '../components/footer';
 import Comment from '../components/comment';
 
-import { createStyles, Overlay, Container, Title, Flex, Button, Text, rem, Image } from '@mantine/core';
+import { createStyles, Overlay, Container, Title, Flex, Button, Text, rem, Image, Grid } from '@mantine/core';
 
 const useStyles = createStyles((theme) => ({
   hero: {
@@ -67,6 +68,15 @@ const useStyles = createStyles((theme) => ({
     },
   },
 
+  subtitle: {
+    fontSize: rem(34),
+    fontWeight: 900,
+
+    [theme.fn.smallerThan('sm')]: {
+      fontSize: rem(24),
+    },
+  },
+
   description: {
     color: theme.white,
     maxWidth: 600,
@@ -85,13 +95,6 @@ const useStyles = createStyles((theme) => ({
     },
   },
 
-  section: {
-    marginTop: '30px',
-    [theme.fn.smallerThan('md')]: {
-      marginTop: '15px',
-    },
-  },
-
   titleSection: {
     fontFamily: 'Carter One, cursive',
     color: theme.red,
@@ -99,24 +102,10 @@ const useStyles = createStyles((theme) => ({
     lineHeight: '5rem'
   },
 
-  flexContainer: {
-    display: 'flex',
-    alignItems: 'center',
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    alignItems: 'center',
-
-    [theme.fn.smallerThan('md')]: {
-      flexDirection: 'column',
-      alignItems: 'center',
-      alignContent: 'center',
-      justifyContent: 'center'
-    },
-  },
-
+  /*
   childEl: {
     position: 'relative',
-    [theme.fn.smallerThan('md')]: {
+    [theme.fn.smallerThan('sm')]: {
       width: '100%',
     },
   },
@@ -124,28 +113,41 @@ const useStyles = createStyles((theme) => ({
   backItem: {
     position: 'absolute',
     top: 0,
-    left: 0,
+    left: 15,
     zIndex: 0,
   },
 
   frontItem: {
     position: 'relative',
     zIndex: '1',
-    marginTop: '69px', // 50 65
-    marginLeft: '26px', // 15 25
+    marginTop: '50px', // 50 65
+    marginLeft: '16px', // 15 25
   },
 
   borderImage: {
     border: "15px solid white",
     borderRadius: "50%",
   },
+  */
+  gridImage: {
+    [theme.fn.smallerThan('sm')]: {
+      display: 'block',
+      margin: '0 auto'
+    },
+    [theme.fn.largerThan('lg')]: {
+      width: 260
+    },
+  },
+
+  gridText: {
+    [theme.fn.largerThan('lg')]: {
+      marginTop: 22
+    },
+  },
 
   textContainer: {
-    maxWidth: "800px",
-    marginLeft: theme.spacing.xl,
-    [theme.fn.smallerThan('md')]: {
-      marginTop: theme.spacing.md,
-      marginLeft: 0,
+    [theme.fn.smallerThan('sm')]: {
+      marginTop: theme.spacing.xs,
     },
   },
 
@@ -155,6 +157,18 @@ const useStyles = createStyles((theme) => ({
       'url(/img/kitchen_1.jpg)',
     backgroundSize: 'cover',
     backgroundPosition: '20% 50%',
+  },
+
+  redLine: {
+    '&::after': {
+      content: '""',
+      margin: "0 auto",
+      display: 'block',
+      backgroundColor: theme.fn.primaryColor(),
+      width: rem(45),
+      height: rem(2),
+      marginTop: theme.spacing.xs,
+    },
   },
 
 }));
@@ -171,10 +185,9 @@ export function Home() {
           zIndex={0}
         />
         <Container className={classes.container}>
-          <Title className={classes.title}>Lorem ipsum dolor sit amet</Title>
+          <Title className={classes.title}>Where Every Bite Tells a Story</Title>
           <Text className={classes.description} size="xl" mt="xl">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            Lectus urna duis convallis convallis tellus id interdum.
+            Embark on a gastronomic journey where creativity meets flavor. Our culinary artistry transforms each dish into an unforgettable masterpiece.
           </Text>
 
           <Button variant="gradient" gradient={{ from: '#C53030', to: '#63171B' }} size="lg" radius="lg" className={classes.control}>
@@ -182,67 +195,67 @@ export function Home() {
           </Button>
         </Container>
       </div>
+      {/*HOT DESSERTS*/}
+      <Desserts />
       {/*ABOUT*/}
-      <Container className={classes.section}>
-        <Flex
-          mih={80}
-          gap="lg"
-          wrap="wrap"
-          className={classes.flexContainer}
-        >
-          <div className={classes.childEl}>
+      <Container size="lg" py="xl" mt="xl">
+        <Title order={2} ta="center" my="sm" className={`${classes.subtitle} ${classes.redLine}`}>About Us</Title>
+        <Grid mt={10} gutter={18}>
+          {/*<Grid.Col xs={12} sm="content"  className={classes.childEl}>
             <div className={classes.backItem}>
               <img radius="md" src="/img/graph_2.png" alt="Back Image" width={300} />
             </div>
             <div className={classes.frontItem}>
               <img radius="md" src="/img/about_3.jpg" alt="About Image" width={240} className={classes.borderImage} />
             </div>
-          </div>
-          <div className={classes.textContainer}>
-            <Title className={classes.titleSection}>About Us</Title>
-            <Text>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Malesuada fames ac turpis egestas maecenas pharetra convallis posuere morbi. Diam donec adipiscing tristique risus nec feugiat. Quam vulputate dignissim suspendisse in est ante in.
+          </Grid.Col>*/}
+          <Grid.Col xs={12} sm="content">
+            <img radius="md" src="/img/dish.png" alt="About Image" width={240} className={classes.gridImage} />
+          </Grid.Col>
+          <Grid.Col xs={12} sm="auto" className={classes.gridText}>
+            <Text align='justify'>
+              Our culinary journey began with a simple belief – that exceptional food has the power to create unforgettable memories. From our kitchen to your table, each dish is thoughtfully curated to celebrate the rich tapestry of flavors and culture. As a family-driven establishment, we take pride in welcoming you into our warm and inviting space, where every meal is an expression of heartfelt hospitality.
             </Text>
-            <Text>
-              Senectus et netus et malesuada. Tortor aliquam nulla facilisi cras. Auctor urna nunc id cursus. Ut pharetra sit amet aliquam. Eu nisl nunc mi ipsum faucibus vitae aliquet nec ullamcorper. Laoreet suspendisse interdum consectetur libero id faucibus nisl tincidunt eget. Quis lectus nulla at volutpat diam ut venenatis. Ut diam quam nulla porttitor massa id. Bibendum at varius vel pharetra vel turpis. Interdum velit euismod in pellentesque massa placerat duis. Scelerisque viverra mauris in aliquam. Mauris sit amet massa vitae tortor.
+            <Text align='justify'>
+              Immerse yourself in a world where innovation meets tradition. Our menu, a symphony of culinary artistry, blends timeless classics with daring innovations. With every bite, you'll embark on a flavorful expedition that awakens the senses and nourishes the soul. Join us in celebrating the joys of food and community, as we craft moments that linger in your heart and memory.
             </Text>
-          </div>
-        </Flex>
+          </Grid.Col>
+        </Grid>
       </Container>
       {/*MENU*/}
 
-      <div className={classes.section}> {/* className={classes.imageSection}*/}
-        {/*
+      {/*<div className={classes.section}>*/} {/* className={classes.imageSection}*/}
+      {/*
         <Overlay
           gradient="linear-gradient(180deg, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, .65) 40%)"
           opacity={1}
           zIndex={0}
         />
         */}
-        <Container>
-          <div className={classes.textContainer}>
-            <Title className={classes.titleSection}>Menu</Title>
-            <Flex
-              mih={50}
-              gap="md"
-              justify="flex-start"
-              align="flex-start"
-              direction="row"
-              wrap="wrap"
-            >
-              <ImageCard href="/" image="https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80" title="Hello World" author="Kmi" views="40" comments="2" />
-              <ImageCard href="/" image="https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80" title="Hello World" author="Kmi" views="40" comments="2" />
-              <ImageCard href="/" image="https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80" title="Hello World" author="Kmi" views="40" comments="2" />
-            </Flex>
-          </div>
-        </Container>
-      </div>
+      <Container size="lg" py="xl" mt="xl">
+        <div className={classes.textContainer}>
+          <Title order={2} ta="center" my="sm" className={`${classes.subtitle} ${classes.redLine}`}>Menu</Title>
+          <Flex
+            mih={50}
+            gap="md"
+            justify="flex-start"
+            align="flex-start"
+            direction="row"
+            wrap="wrap"
+          >
+            <ImageCard href="/" image="https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80" title="Hello World" author="Kmi" views="40" comments="2" />
+            <ImageCard href="/" image="https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80" title="Hello World" author="Kmi" views="40" comments="2" />
+            <ImageCard href="/" image="https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80" title="Hello World" author="Kmi" views="40" comments="2" />
+          </Flex>
+        </div>
+      </Container>
+      {/*</div>*/}
       {/*COMMENTS*/}
       <div>
-        <Container>
+        <Container size="lg" py="xl" mt="xl">
           <div className={classes.textContainer}>
-            <Title className={classes.titleSection}>Comments</Title>
-            <Comment name="Mike" postedAt="10 minutes ago" body="I use Heroku to host my Node.js application, but MongoDB add-on appears to be too expensive. I consider switching to Digital Ocean VPS to save some cash."/>
+            <Title order={2} ta="center" my="sm" className={`${classes.subtitle} ${classes.redLine}`}>Comments</Title>
+            <Comment name="Mike" postedAt="10 minutes ago" body="I use Heroku to host my Node.js application, but MongoDB add-on appears to be too expensive. I consider switching to Digital Ocean VPS to save some cash." />
           </div>
         </Container>
       </div>

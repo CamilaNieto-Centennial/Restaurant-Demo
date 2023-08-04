@@ -4,9 +4,13 @@ import { MantineLogo } from '@mantine/ds';
 
 const useStyles = createStyles((theme) => ({
   footer: {
+    marginTop: rem(100),
     borderTop: `${rem(1)} solid ${
       theme.colorScheme === 'dark' ? theme.colors.dark[5] : theme.colors.gray[2]
     }`,
+    [theme.fn.smallerThan('md')]: {
+      marginTop: rem(50),
+    },
   },
 
   inner: {
