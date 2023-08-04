@@ -108,10 +108,17 @@ export default function NavBar() {
                         </a>
                     </Group>
                     <Group spacing="1.5rem" className={classes.hiddenMobile}>
-                        <ThemeSwitcher justify="right"/>
+                        <ThemeSwitcher justify="right" />
                     </Group>
 
-                    <Burger opened={drawerOpened} onClick={toggleDrawer} className={classes.hiddenDesktop} />
+                    <Burger
+                        opened={drawerOpened}
+                        onClick={toggleDrawer}
+                        className={classes.hiddenDesktop}
+                        transitionProps={{
+                            duration: 0 // Set the desired duration value, e.g., 0ms for no transition
+                        }}
+                    />
                 </Group>
             </Header>
 
@@ -123,25 +130,28 @@ export default function NavBar() {
                 title="Mantine"
                 className={classes.hiddenDesktop}
                 zIndex={1000000}
+                transitionProps={{
+                    duration: 0 // Set the desired duration value, e.g., 0ms for no transition
+                }}
             >
                 <ScrollArea h={`calc(100vh - ${rem(60)})`} mx="-md">
-                <Divider my="sm" color={theme.colorScheme === 'dark' ? 'dark.5' : 'gray.1'}/>
+                    <Divider my="sm" color={theme.colorScheme === 'dark' ? 'dark.5' : 'gray.1'} />
 
-                <a href="/" className={classes.link}>
-                    Home
-                </a>
-                <a href="/hotItem" className={classes.link}>
-                    Hot Item
-                </a>
-                <a href="/menu" className={classes.link}>
-                    Menu
-                </a>
-                <a href="/contact" className={classes.link}>
-                    Contact
-                </a>
-                <ThemeSwitcher justify="left" style={classes.link} />
+                    <a href="/" className={classes.link}>
+                        Home
+                    </a>
+                    <a href="/hotItem" className={classes.link}>
+                        Hot Item
+                    </a>
+                    <a href="/menu" className={classes.link}>
+                        Menu
+                    </a>
+                    <a href="/contact" className={classes.link}>
+                        Contact
+                    </a>
+                    <ThemeSwitcher justify="left" style={classes.link} />
 
-                {/*
+                    {/*
                 <Divider my="sm" color={theme.colorScheme === 'dark' ? 'dark.5' : 'gray.1'} />
 
                 
