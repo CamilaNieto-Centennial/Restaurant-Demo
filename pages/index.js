@@ -4,11 +4,11 @@ import { UserContext, UserProvider } from '../components/userContext';
 import NavBar from '../components/navbar';
 import React, { useState } from 'react';
 import Desserts from '../components/dessertsSection';
-import ImageCard from '../components/card';
+import MainCard from '../components/card';
 import Footer from '../components/footer';
 import Comment from '../components/comment';
 
-import { createStyles, Overlay, Container, Title, Flex, Button, Text, rem, Image, Grid } from '@mantine/core';
+import { createStyles, Overlay, Container, Title, Flex, Button, Text, rem, Image, Grid, SimpleGrid } from '@mantine/core';
 
 const useStyles = createStyles((theme) => ({
   hero: {
@@ -178,6 +178,7 @@ export function Home() {
 
   return (
     <>
+      {/*HERO*/}
       <div className={classes.hero}>
         <Overlay
           gradient="linear-gradient(180deg, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, .65) 40%)"
@@ -195,7 +196,7 @@ export function Home() {
           </Button>
         </Container>
       </div>
-      {/*HOT DESSERTS*/}
+      {/*QUICK DESCRIPTION & HOT DESSERTS*/}
       <Desserts />
       {/*ABOUT*/}
       <Container size="lg" py="xl" mt="xl">
@@ -223,33 +224,52 @@ export function Home() {
         </Grid>
       </Container>
       {/*MENU*/}
-
-      {/*<div className={classes.section}>*/} {/* className={classes.imageSection}*/}
-      {/*
-        <Overlay
-          gradient="linear-gradient(180deg, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, .65) 40%)"
-          opacity={1}
-          zIndex={0}
-        />
-        */}
       <Container size="lg" py="xl" mt="xl">
         <div className={classes.textContainer}>
           <Title order={2} ta="center" my="sm" className={`${classes.subtitle} ${classes.redLine}`}>Menu</Title>
           <Flex
             mih={50}
             gap="md"
-            justify="flex-start"
+            justify="center"
             align="flex-start"
             direction="row"
             wrap="wrap"
           >
-            <ImageCard href="/" image="https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80" title="Hello World" author="Kmi" views="40" comments="2" />
-            <ImageCard href="/" image="https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80" title="Hello World" author="Kmi" views="40" comments="2" />
-            <ImageCard href="/" image="https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80" title="Hello World" author="Kmi" views="40" comments="2" />
+            <img radius="md" href="/" width={240} src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80" alt="Breakfast" />
+            <img radius="md" href="/" width={240} src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80" alt="Lunch" />
+            <img radius="md" href="/" width={240} src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80" alt="Dinner" />
           </Flex>
         </div>
       </Container>
-      {/*</div>*/}
+      {/*MOST POPULAR RECIPES*/}
+      <Container size="lg" py="xl" mt="xl">
+        <div className={classes.textContainer}>
+          <Title order={2} ta="center" my="sm" className={`${classes.subtitle} ${classes.redLine}`}>Most Popular Recipes</Title>
+          <SimpleGrid cols={3} mt={10} spacing="xl" breakpoints={[{ maxWidth: 'md', cols: 2 }, { maxWidth: 'sm', cols: 1 }]}>
+            <MainCard
+              title="Norway Fjord Adventures"
+              img="https://images.unsplash.com/photo-1527004013197-933c4bb611b3?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=720&q=80"
+              tag="ON SALE"
+              description="With Fjord Tours you can explore more of the magical fjord landscapes with tours and activities on and around the fjords of Norway"
+              btn="BOOK"
+            />
+            <MainCard
+              title="Norway Fjord Adventures"
+              img="https://images.unsplash.com/photo-1527004013197-933c4bb611b3?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=720&q=80"
+              tag="ON SALE"
+              description="With Fjord Tours you can explore more of the magical fjord landscapes with tours and activities on and around the fjords of Norway"
+              btn="BOOK"
+            />
+            <MainCard
+              title="Norway Fjord Adventures"
+              img="https://images.unsplash.com/photo-1527004013197-933c4bb611b3?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=720&q=80"
+              tag="ON SALE"
+              description="With Fjord Tours you can explore more of the magical fjord landscapes with tours and activities on and around the fjords of Norway"
+              btn="BOOK"
+            />
+          </SimpleGrid>
+        </div>
+      </Container>
       {/*COMMENTS*/}
       <div>
         <Container size="lg" py="xl" mt="xl">

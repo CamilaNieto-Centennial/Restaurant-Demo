@@ -1,102 +1,30 @@
-import { IconEye, IconMessageCircle } from '@tabler/icons-react';
-import { Card, Text, Group, Center, createStyles, getStylesRef, rem } from '@mantine/core';
+import { Card, Image, Text, Badge, Button, Group } from '@mantine/core';
 
-const useStyles = createStyles((theme) => ({
-  card: {
-    position: 'relative',
-    height: rem(280),
-    backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[6] : theme.colors.gray[0],
-
-    [`&:hover .${getStylesRef('image')}`]: {
-      transform: 'scale(1.03)',
-    },
-  },
-
-  image: {
-    ...theme.fn.cover(),
-    ref: getStylesRef('image'),
-    backgroundSize: 'cover',
-    transition: 'transform 500ms ease',
-  },
-
-  overlay: {
-    position: 'absolute',
-    top: '20%',
-    left: 0,
-    right: 0,
-    bottom: 0,
-    backgroundImage: 'linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, .85) 90%)',
-  },
-
-  content: {
-    height: '100%',
-    position: 'relative',
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'flex-end',
-    zIndex: 1,
-  },
-
-  title: {
-    color: theme.white,
-    marginBottom: rem(5),
-  },
-
-  bodyText: {
-    color: theme.colors.dark[2],
-    marginLeft: rem(7),
-  },
-
-  author: {
-    color: theme.colors.dark[2],
-  },
-}));
-
-
-export default function ImageCard(props) {
-  const { classes, theme } = useStyles();
-
+export default function MainCard(props) {
   return (
-    <Card
-      p="lg"
-      shadow="lg"
-      className={classes.card}
-      radius="md"
-      component="a"
-      href={props.link}
-      target="_blank"
-    >
-      <div className={classes.image} style={{ backgroundImage: `url(${props.image})` }} />
-      <div className={classes.overlay} />
+    <Card shadow="sm" padding="lg" radius="md" withBorder>
+      <Card.Section>
+        <Image
+          src={props.img}
+          height={160}
+          alt={props.title}
+        />
+      </Card.Section>
 
-      <div className={classes.content}>
-        <div>
-          <Text size="lg" className={classes.title} weight={500}>
-            {props.title}
-          </Text>
+      <Group position="apart" mt="md" mb="xs">
+        <Text weight={500}>{props.title}</Text>
+        <Badge color="pink" variant="light">
+          {props.tag}
+        </Badge>
+      </Group>
 
-          <Group position="apart" spacing="xs">
-            <Text size="sm" className={classes.author}>
-              {props.author}
-            </Text>
+      <Text size="sm" color="dimmed">
+        {props.description}
+      </Text>
 
-            <Group spacing="lg">
-              <Center>
-                <IconEye size="1rem" stroke={1.5} color={theme.colors.dark[2]} />
-                <Text size="sm" className={classes.bodyText}>
-                  {props.views}
-                </Text>
-              </Center>
-              <Center>
-                <IconMessageCircle size="1rem" stroke={1.5} color={theme.colors.dark[2]} />
-                <Text size="sm" className={classes.bodyText}>
-                  {props.comments}
-                </Text>
-              </Center>
-            </Group>
-          </Group>
-        </div>
-      </div>
+      <Button variant="light" color="blue" fullWidth mt="md" radius="md">
+        {props.btn}
+      </Button>
     </Card>
   );
 }
