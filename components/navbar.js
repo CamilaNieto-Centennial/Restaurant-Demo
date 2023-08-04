@@ -14,7 +14,7 @@ import {
     rem,
 } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
-import React, { useState, useEffect, useContext } from 'react';
+import React from 'react';
 import { ThemeSwitcher } from './themeSwitcher';
 import { MantineLogo } from '@mantine/ds';
 
@@ -87,8 +87,6 @@ export default function NavBar() {
     const [drawerOpened, { toggle: toggleDrawer, close: closeDrawer }] = useDisclosure(false);
     const { classes, theme } = useStyles();
 
-    const [user, setUser] = useState(null);
-
     return (
         <Box pb={0}>
             <Header height={60} px="md">
@@ -113,32 +111,6 @@ export default function NavBar() {
                         <ThemeSwitcher justify="right"/>
                     </Group>
 
-                    {/*
-                    {user ? (
-                        <Group spacing="1.5rem" className={classes.hiddenMobile}>
-                            <Group spacing=".5rem">
-                                <Avatar radius="xl" color="red" />
-                                <Text fw={700}>
-                                    {user.displayName}
-                                </Text>
-                            </Group>
-                            <Button onClick={() => auth.signOut()}>
-                                <a href="">Logout</a>
-                            </Button>
-                            <ThemeSwitcher />
-                        </Group>
-                    ) : (
-                        <Group className={classes.hiddenMobile}>
-                            <Button variant="default">
-                                <a href="/login">Login</a>
-                            </Button>
-                            <Button>
-                                <a href="/createaccount">Sign up</a>
-                            </Button>
-                            <ThemeSwitcher />
-                        </Group>
-                    )}
-                    */}
                     <Burger opened={drawerOpened} onClick={toggleDrawer} className={classes.hiddenDesktop} />
                 </Group>
             </Header>
@@ -152,7 +124,7 @@ export default function NavBar() {
                 className={classes.hiddenDesktop}
                 zIndex={1000000}
             >
-                {/*<ScrollArea h={`calc(100vh - ${rem(60)})`} mx="-md">*/}
+                <ScrollArea h={`calc(100vh - ${rem(60)})`} mx="-md">
                 <Divider my="sm" color={theme.colorScheme === 'dark' ? 'dark.5' : 'gray.1'}/>
 
                 <a href="/" className={classes.link}>
@@ -172,32 +144,9 @@ export default function NavBar() {
                 {/*
                 <Divider my="sm" color={theme.colorScheme === 'dark' ? 'dark.5' : 'gray.1'} />
 
-                {user ? (
-                    <Group position="center" grow pb="xl" px="md">
-                        <Group spacing=".5rem">
-                            <Avatar radius="xl" color="red" />
-                            <Text fw={700}>
-                                {user.displayName}
-                            </Text>
-                        </Group>
-                        <Button onClick={() => auth.signOut()}>
-                            <a href="">Logout</a>
-                        </Button>
-                        <ThemeSwitcher />
-                    </Group>
-                ) : (
-                    <Group position="center" grow pb="xl" px="md">
-                        <Button variant="default">
-                            <a href="/login">Login</a>
-                        </Button>
-                        <Button>
-                            <a href="/createaccount">Sign up</a>
-                        </Button>
-                        <ThemeSwitcher />
-                    </Group>
-                )}
+                
                 */}
-                {/*</ScrollArea>*/}
+                </ScrollArea>
             </Drawer>
         </Box>
     );
