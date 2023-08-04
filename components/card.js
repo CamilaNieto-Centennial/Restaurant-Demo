@@ -1,4 +1,6 @@
-import { Card, Image, Text, Badge, Button, Group } from '@mantine/core';
+import { Card, Image, Text, Badge, Button, Group, Center } from '@mantine/core';
+
+import { IconStarFilled } from '@tabler/icons-react';
 
 export default function MainCard(props) {
   return (
@@ -13,16 +15,19 @@ export default function MainCard(props) {
 
       <Group position="apart" mt="md" mb="xs">
         <Text weight={500}>{props.title}</Text>
-        <Badge color="pink" variant="light">
-          {props.tag}
-        </Badge>
+        <Center c="red.9">
+          <IconStarFilled size="1rem" stroke={1.5} />
+          <Text fw={700} fz="sm" c="red.9" ml={4}>
+            {props.tag}
+          </Text>
+        </Center>
       </Group>
 
-      <Text size="sm" color="dimmed">
+      <Text size="sm" fw={700} color="dimmed">
         {props.description}
       </Text>
 
-      <Button variant="light" color="blue" fullWidth mt="md" radius="md">
+      <Button variant="gradient" gradient={{ from: '#C53030', to: '#822727' }} fullWidth mt="md" radius="md">
         {props.btn}
       </Button>
     </Card>

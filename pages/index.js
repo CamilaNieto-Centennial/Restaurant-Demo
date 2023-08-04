@@ -190,14 +190,15 @@ export function Home() {
           <Text className={classes.description} size="xl" mt="xl">
             Embark on a gastronomic journey where creativity meets flavor. Our culinary artistry transforms each dish into an unforgettable masterpiece.
           </Text>
-
           <Button variant="gradient" gradient={{ from: '#C53030', to: '#63171B' }} size="lg" radius="lg" className={classes.control}>
             Get started
           </Button>
         </Container>
       </div>
+
       {/*QUICK DESCRIPTION & HOT DESSERTS*/}
       <Desserts />
+
       {/*ABOUT*/}
       <Container size="lg" py="xl" mt="xl">
         <Title order={2} ta="center" my="sm" className={`${classes.subtitle} ${classes.redLine}`}>About Us</Title>
@@ -223,6 +224,7 @@ export function Home() {
           </Grid.Col>
         </Grid>
       </Container>
+
       {/*MENU*/}
       <Container size="lg" py="xl" mt="xl">
         <div className={classes.textContainer}>
@@ -241,35 +243,37 @@ export function Home() {
           </Flex>
         </div>
       </Container>
+
       {/*MOST POPULAR RECIPES*/}
       <Container size="lg" py="xl" mt="xl">
         <div className={classes.textContainer}>
           <Title order={2} ta="center" my="sm" className={`${classes.subtitle} ${classes.redLine}`}>Most Popular Recipes</Title>
           <SimpleGrid cols={3} mt={10} spacing="xl" breakpoints={[{ maxWidth: 'md', cols: 2 }, { maxWidth: 'sm', cols: 1 }]}>
             <MainCard
-              title="Norway Fjord Adventures"
-              img="https://images.unsplash.com/photo-1527004013197-933c4bb611b3?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=720&q=80"
-              tag="ON SALE"
-              description="With Fjord Tours you can explore more of the magical fjord landscapes with tours and activities on and around the fjords of Norway"
-              btn="BOOK"
+              title="Banga Soup"
+              img="/img/banga_soup.jpg"
+              tag="8.5"
+              description="$15.99"
+              btn="ADD TO CART"
             />
             <MainCard
-              title="Norway Fjord Adventures"
-              img="https://images.unsplash.com/photo-1527004013197-933c4bb611b3?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=720&q=80"
-              tag="ON SALE"
-              description="With Fjord Tours you can explore more of the magical fjord landscapes with tours and activities on and around the fjords of Norway"
-              btn="BOOK"
+              title="Jollof Rice"
+              img="/img/jollof_rice.jpg"
+              tag="8.0"
+              description="$11.99"
+              btn="ADD TO CART"
             />
             <MainCard
-              title="Norway Fjord Adventures"
-              img="https://images.unsplash.com/photo-1527004013197-933c4bb611b3?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=720&q=80"
-              tag="ON SALE"
-              description="With Fjord Tours you can explore more of the magical fjord landscapes with tours and activities on and around the fjords of Norway"
-              btn="BOOK"
+              title="Suya"
+              img="/img/suya.jpg"
+              tag="9.0"
+              description="$14.99"
+              btn="ADD TO CART"
             />
           </SimpleGrid>
         </div>
       </Container>
+
       {/*COMMENTS*/}
       <div>
         <Container size="lg" py="xl" mt="xl">
@@ -279,6 +283,7 @@ export function Home() {
           </div>
         </Container>
       </div>
+      
       {/*FOOTER*/}
       <Footer />
     </>

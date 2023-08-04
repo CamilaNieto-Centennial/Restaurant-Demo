@@ -105,7 +105,7 @@ export default function FeaturesCards() {
                 breakpoints={[{ maxWidth: 550, cols: 1, spacing: 30 }]}
                 style={{ marginTop: 30 }}
             >
-                <Image maw={100} mx="auto" src={feature.icon} alt={feature.title} />
+                <Image maw={120} mx="auto" src={feature.icon} alt={feature.title} />
                 <div>
                     <Text fz="lg" fw={500} className={classes.cardTitle} >
                         {feature.title}
