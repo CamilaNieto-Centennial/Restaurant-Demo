@@ -9,6 +9,7 @@ import MenuItem from '../components/menuItem'
 import Footer from '../components/footer';
 import Comment from '../components/comment';
 
+import { Carousel } from '@mantine/carousel';
 import { createStyles, Overlay, Container, Title, Flex, Button, Text, rem, Image, Grid, SimpleGrid } from '@mantine/core';
 
 const useStyles = createStyles((theme) => ({
@@ -103,33 +104,6 @@ const useStyles = createStyles((theme) => ({
     lineHeight: '5rem'
   },
 
-  /*
-  childEl: {
-    position: 'relative',
-    [theme.fn.smallerThan('sm')]: {
-      width: '100%',
-    },
-  },
-
-  backItem: {
-    position: 'absolute',
-    top: 0,
-    left: 15,
-    zIndex: 0,
-  },
-
-  frontItem: {
-    position: 'relative',
-    zIndex: '1',
-    marginTop: '50px', // 50 65
-    marginLeft: '16px', // 15 25
-  },
-
-  borderImage: {
-    border: "15px solid white",
-    borderRadius: "50%",
-  },
-  */
   gridImage: {
     [theme.fn.smallerThan('sm')]: {
       display: 'block',
@@ -172,15 +146,6 @@ const useStyles = createStyles((theme) => ({
     },
   },
 
-  redCircle: {
-    outline: "3px solid #E53E3E",
-    boxShadow: "4px 4px 20px 6px rgba(229, 62, 62, 0.3)",
-  },
-
-  blackCircle: {
-    outline: "3px solid #000",
-    boxShadow: "4px 4px 20px 6px rgba(0, 0, 0, 0.3)",
-  },
 
 }));
 
@@ -253,7 +218,6 @@ export function Home() {
             <MenuItem
               title="Breakfast"
               img="/img/noodles_and_egg.png"
-              //onChange={showCircle}
             />
             <MenuItem
               title="Lunch"
@@ -302,13 +266,26 @@ export function Home() {
         <Container size="lg" py="xl" mt="xl">
           <div className={classes.textContainer}>
             <Title order={2} ta="center" my="sm" className={`${classes.subtitle} ${classes.redLine}`}>Comments</Title>
-            <Comment name="Mike" postedAt="10 minutes ago" body="I use Heroku to host my Node.js application, but MongoDB add-on appears to be too expensive. I consider switching to Digital Ocean VPS to save some cash." />
+            <Carousel
+              mx="auto"
+              slideGap="md" loop draggable={false}
+            >
+              <Carousel.Slide>
+                <Comment image="/img/user.jpeg" name="Mike" postedAt="10 minutes ago" body="An enchanting culinary adventure that took me straight to the heart of Nigeria. The fusion of innovation and tradition on the menu is unparalleled. Dining here felt like an embrace from family, where every dish shared a story." />
+              </Carousel.Slide>
+              <Carousel.Slide>
+                <Comment image="/img/user_2.jpg" name="Victoria" postedAt="30 minutes ago" body="Unforgettable memories were woven with each exquisite dish. From the warm ambiance to the authentic flavors, this restaurant embodies the heart of Nigeria's culinary heritage. It's more than food; it's an immersive journey." />
+              </Carousel.Slide>
+              <Carousel.Slide>
+                <Comment image="/img/user_3.jpg" name="Alex" postedAt="45 minutes ago" body="A truly captivating experience! The flavors are a heartfelt ode to tradition, weaving tales of culture and community. Every bite felt like a journey to Nigeria's culinary soul. I'll cherish these memories forever." />
+              </Carousel.Slide>
+            </Carousel>
           </div>
-        </Container>
-      </div>
+        </Container >
+      </div >
 
       {/*FOOTER*/}
-      <Footer />
+      < Footer />
     </>
   );
 }
