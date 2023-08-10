@@ -5,6 +5,7 @@ import NavBar from '../components/navbar';
 import React, { useState } from 'react';
 import Desserts from '../components/dessertsSection';
 import MainCard from '../components/card';
+import MenuItem from '../components/menuItem'
 import Footer from '../components/footer';
 import Comment from '../components/comment';
 
@@ -171,10 +172,21 @@ const useStyles = createStyles((theme) => ({
     },
   },
 
+  redCircle: {
+    outline: "3px solid #E53E3E",
+    boxShadow: "4px 4px 20px 6px rgba(229, 62, 62, 0.3)",
+  },
+
+  blackCircle: {
+    outline: "3px solid #000",
+    boxShadow: "4px 4px 20px 6px rgba(0, 0, 0, 0.3)",
+  },
+
 }));
 
 export function Home() {
   const { classes } = useStyles();
+
 
   return (
     <>
@@ -231,15 +243,26 @@ export function Home() {
           <Title order={2} ta="center" my="sm" className={`${classes.subtitle} ${classes.redLine}`}>Menu</Title>
           <Flex
             mih={50}
-            gap="md"
+            gap="xl"
             justify="center"
             align="flex-start"
             direction="row"
             wrap="wrap"
+            mt="lg"
           >
-            <img radius="md" href="/" width={240} src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80" alt="Breakfast" />
-            <img radius="md" href="/" width={240} src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80" alt="Lunch" />
-            <img radius="md" href="/" width={240} src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80" alt="Dinner" />
+            <MenuItem
+              title="Breakfast"
+              img="/img/noodles_and_egg.png"
+              //onChange={showCircle}
+            />
+            <MenuItem
+              title="Lunch"
+              img="/img/stew.png"
+            />
+            <MenuItem
+              title="Dinner"
+              img="/img/porridge_beans.png"
+            />
           </Flex>
         </div>
       </Container>
@@ -283,7 +306,7 @@ export function Home() {
           </div>
         </Container>
       </div>
-      
+
       {/*FOOTER*/}
       <Footer />
     </>
