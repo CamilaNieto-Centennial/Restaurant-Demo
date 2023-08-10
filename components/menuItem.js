@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 
-import { createStyles, Title, Text, Image, } from '@mantine/core';
+import { createStyles, Title, Text, Image, useMantineTheme } from '@mantine/core';
 
 const useStyles = createStyles((theme) => ({
     roundImg: {
@@ -10,29 +10,29 @@ const useStyles = createStyles((theme) => ({
         marginBottom: ".8em",
     },
     redCircle: {
-        outline: "3px solid #C53030",
-        boxShadow: "4px 4px 20px 6px rgba(229, 62, 62, 0.3)",
+        outline: `3px solid ${theme.colors.red[7]}`,
+        boxShadow: `4px 4px 20px 6px ${theme.colors.red[4]}28`,
         animation: "rotate-center 0.6s ease-in-out both",
     },
     blackCircle: {
-        outline: "3px solid #000",
-        boxShadow: "4px 4px 20px 6px rgba(0, 0, 0, 0.3)",
+        outline: `3px solid ${theme.colors.gray[6]}`,
+        boxShadow: `4px 4px 20px 6px ${theme.colors.gray[4]}28`,
     },
     redText: {
-        color: "#C53030"
+        color: theme.colors.red[7],
     },
     blackText: {
-        color: "#000"
+        color: theme.colors.gray[6],
     },
 
 }));
 
 export default function menuItem(props) {
+    const theme = useMantineTheme();
     const { classes } = useStyles();
     const [active, setActive] = useState(false);
 
     function handleClick() {
-        console.log(`${props.title} Clicked`);
         setActive(!active);
     }
 
@@ -40,10 +40,18 @@ export default function menuItem(props) {
         setActive(false);
     };
 
+    const circleClassName = active ? classes.redCircle : classes.blackCircle;
+    const textClassName = active
+        ? theme.colorScheme === 'dark'
+            ? classes.redText
+            : classes.redText // Apply redText class for both dark and light themes
+        : classes.blackText;
+
+
     return (
         <div onClick={handleClick} onBlur={handleBlur} tabIndex={0}>
-            <img className={`${classes.roundImg} ${active ? classes.redCircle : classes.blackCircle}`} radius="md" href="/" width={240} src={props.img} alt={props.title} />
-            <Title className={active ? classes.redText : classes.blackText} span order={4} ta="center">{props.title} <Text span inherit component="a" href="https://mantine.dev/core/"> &gt;</Text></Title>
+            <img className={`${classes.roundImg} ${circleClassName}`} radius="md" href="/" width={240} src={props.img} alt={props.title} />
+            <Title className={textClassName} span order={4} ta="center">{props.title} <Text span inherit component="a" href="https://mantine.dev/core/"> &gt;</Text></Title>
         </div>
     )
 }
