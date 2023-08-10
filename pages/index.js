@@ -177,7 +177,7 @@ export function Home() {
       <Desserts />
 
       {/*ABOUT*/}
-      <Container size="lg" py="xl" mt="xl">
+      <Container size="lg" pt="xl" pb="xs" mt="xl">
         <Title order={2} ta="center" my="sm" className={`${classes.subtitle} ${classes.redLine}`}>About Us</Title>
         <Grid mt={10} gutter={18}>
           {/*<Grid.Col xs={12} sm="content"  className={classes.childEl}>
